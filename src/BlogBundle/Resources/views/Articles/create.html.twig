@@ -1,0 +1,14 @@
+{%extends "BlogBundle:Default:index.html.twig"%}
+
+   {%block container %}
+       <a href="{{path('blog_logout')}}" class="btn btn-danger">
+        Sign out
+       </a>
+        <a href="{{path('blog_list')}}" class="btn btn-primary">
+        Article list
+       </a>
+   	<h2 class="page-header">Create Article</h2>
+	   	{{ form_start(form)}}
+	  	{{ form_widget(form)}}
+	  	{{ form_end(form)}}
+   {% endblock %}

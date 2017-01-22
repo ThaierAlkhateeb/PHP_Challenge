@@ -1,0 +1,13 @@
+blog:
+    resource: "@BlogBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+pageNotFound:
+    pattern:  /{path}
+    defaults: { _controller: BlogBundle:PageNotFound:pageNotFound, path: '' }
+    requirements:
+        path: .*

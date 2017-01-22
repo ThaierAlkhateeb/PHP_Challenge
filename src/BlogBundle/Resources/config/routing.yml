@@ -1,0 +1,22 @@
+blog_homepage:
+    path:     /login
+    defaults: { _controller: BlogBundle:Default:index }
+
+blog_list:
+    pattern:   /Articles/list
+    defaults: { _controller: BlogBundle:Articles:list }
+blog_create:
+    pattern:  /Articles/create
+    defaults: { _controller: BlogBundle:Articles:create }
+
+blog_edit:
+    pattern:  /Articles/edit/{id}
+    defaults: { _controller: BlogBundle:Articles:edit }
+    
+blog_delete:
+    pattern:  /Articles/delete/{id}
+    defaults: { _controller: BlogBundle:Articles:delete }
+    
+blog_logout:
+    pattern:  /logout
+    defaults: { _controller: BlogBundle:Default:logout }

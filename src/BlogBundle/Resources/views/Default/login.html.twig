@@ -1,0 +1,67 @@
+{%extends "BlogBundle:Default:index.html.twig"%}
+
+   {%block container %}
+  
+        <h2>Sign in</h2><br/>
+        <form  method ="POST" action="{{path('blog_homepage')}}" >
+            Username: <input type="text" name="username">
+            Password: <input type="password"name="password">
+           
+            <button  class="btn-primary" type="submit">Sign in</button>
+    
+        </form>
+
+   <h1>Articles</h1>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email Address</th>
+              <th>Text</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for article in articles %}
+            <tr>
+              <th scope="row">{{ article.id }}</th>
+              <td> {{ article.name }}  </td>
+              <td> {{ article.emailAddress }} </td>
+              <td> {{ article.text }} </td>
+             
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+ 
+    <div class="row">
+        <div class="span4">
+        {% if total_pages >0 %}
+            <div class="pagination">
+                <ul>
+                  {% for i in 1..total_pages%}
+                      {%if loop.first%}
+                        <li class="prev{% if current_page==1%} disabled {% endif %}"><a href="
+                          {{path('blog_homepage',{'page':loop.index})}}
+                        ">Prev</a></li>
+                      {%endif%}
+
+                       <li {%if current_page==loop.index%} class="active" {%endif%}><a href="{{path('blog_homepage',{'page':loop.index})}}">{{loop.index}}</a></li>
+                       
+                        {%if loop.last%}
+                           <li class="next{% if current_page==total_pages%} disabled {% endif %}"><a href="{{path('blog_homepage',{'page':loop.index})}}">Next</a></li>
+                        {%endif%}
+                   
+                    {%endfor%}
+                </ul>
+            </div>
+            {%endif%}
+        </div>
+        </div>
+
+    {% if name is defined%}
+      <div class="alert-info fade in">
+          <strong>{{name}}</strong>
+      </div>
+    {%endif%}
+ {%endblock%}
